@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {IERC20} from "ccip/contracts/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/IERC20.sol";
 import "./interfaces/IPool.sol";
@@ -22,5 +22,17 @@ contract Manager {
         i_usdcToken.transferFrom(msg.sender, address(this), _amount);
         IERC20(address(i_usdcToken)).approve(address(lendingPool), _amount);
         lendingPool.deposit(address(i_usdcToken), _amount, address(this), 0);
+    }
+
+    function withdraw(uint256 _amount) public returns (uint256) {
+        IERC20(aTokenAddress()).approve(address(lendingPool), _amount);
+        return lendingPool.withdraw(i_usdcToken, _amount, msg.sender);
+    }
+
+    function aTokenAddress() public view returns (address) {
+        lendingPool.ReserveData memory reserveData = lendingPool.getReserveData(
+            i_usdcToken
+        );
+        return reserveData.aTokenAddress;
     }
 }
