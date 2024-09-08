@@ -1,17 +1,13 @@
-## Foundry
+# OmniVault
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+OmniVault is a cross-chain yield optimizer for USDC, leveraging Chainlink's Cross-Chain Interoperability Protocol (CCIP) and the ERC4626 vault standard. It dynamically finds the best yield across Aave on Base, Arbitrum, Optimism, and Sepolia, and automatically rebalances assets for maximum returns.
 
-Foundry consists of:
+## Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
+- **Cross-Chain Yield Optimization**: Automatically finds and optimizes yield across multiple chains.
+- **Automated Rebalancing**: Uses Chainlink CCIP to bridge assets and reallocate them to the chain offering the best returns.
+- **ERC4626 Standard**: Follows the ERC4626 vault standard for compatibility with existing DeFi infrastructure.
+- **Seamless User Experience**: Simple deposit and withdrawal processes with automated yield management.
 
 ## Usage
 
@@ -31,36 +27,4 @@ $ forge test
 
 ```shell
 $ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
 ```
